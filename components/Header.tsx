@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaBars } from "react-icons/fa"
+import { FaCaretDown } from "react-icons/fa"
 
 const Header = () => {
     const [open, setOpen] = useState(false)
+    const [service, setService] = useState(false)
 
 
 
@@ -14,7 +16,9 @@ const Header = () => {
     }
     console.log(open);
 
-
+    const click = () => {
+        setService(!service)
+    }
 
 
     return (
@@ -24,27 +28,27 @@ const Header = () => {
             </div>
             <div className='border border-[#3f3b3b] rounded py-[8px] px-[13px] cursor-pointer '>
                 <FaBars color='#5C5C5C' size={"22px"} onClick={handleChange} />
-               {
-                open &&  <nav className='absolute top-[60px] transition duration-200 ease-out bg-[#121212] text-white/50  left-0 w-full justify-center items-center'>
-                <ul className='flex flex-col menu_list items-center space-y-2 pb-3 text-[13px] leading-[19px] font-normal' >
-                    <Link href={"#hero"} className="text-white">home</Link>
-                    <Link href={"#what_we_do"} className="hover:text-white">What we do</Link>
-                    <Link href={"#products"} className="hover:text-white">Products</Link>
-                    <Link href={""} className="hover:text-white">Services
-                        <ul className=' flex-col hidden'>
-                            <Link href={"#pre_production"} className="hover:text-white">Pre-production</Link>
-                            <Link href={"#production"} className="hover:text-white">production</Link>
-                            <Link href={"#post_production"} className="hover:text-white">Post-production</Link>
+                {
+                    open && <nav className='absolute top-[60px] transition duration-200 ease-out bg-[#121212] text-white/50  left-0 w-full justify-center items-center'>
+                        <ul className='flex flex-col menu_list items-center space-y-2 pb-3 text-[13px] leading-[19px] font-normal' >
+                            <Link href={"#hero"} className="text-white">home</Link>
+                            <Link href={"#what_we_do"} className="hover:text-white">What we do</Link>
+                            <Link href={"#products"} className="hover:text-white">Products</Link>
+                            <Link href={""} onClick={click} className="hover:text-white relative flex items-center flex-col w-full"><p className='flex items-center'>Services <FaCaretDown /></p>
+                                {service && <ul className='flex flex-col w-full bg-white text-black pl-6 space-y-1 '>
+                                    <Link href={"#pre_production"} className="hover:text-white">Pre-production</Link>
+                                    <Link href={"#production"} className="hover:text-white">production</Link>
+                                    <Link href={"#post_production"} className="hover:text-white">Post-production</Link>
+                                </ul>}
+                            </Link>
+                            <Link href={"#filming"} className="hover:text-white">Filming in Nepal</Link>
+                            <Link href={"#sample"} className="hover:text-white">Works</Link>
+                            <Link href={"#clients"} className="hover:text-white">Clients</Link>
+                            <Link href={"#contact"} className="hover:text-white">Contact Us</Link>
+                            <Link href={""} className="hover:text-white">Gallery & News</Link>
                         </ul>
-                    </Link>
-                    <Link href={"#filming"} className="hover:text-white">Filming in Nepal</Link>
-                    <Link href={""} className="hover:text-white">Works</Link>
-                    <Link href={"#clients"} className="hover:text-white">Clients</Link>
-                    <Link href={"#contact"} className="hover:text-white">Contact Us</Link>
-                    <Link href={"" }className="hover:text-white">Gallery & News</Link>
-                </ul>
-            </nav>
-               }
+                    </nav>
+                }
             </div>
         </div>
     )

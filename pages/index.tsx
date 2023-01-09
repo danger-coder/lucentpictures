@@ -11,8 +11,15 @@ import Production from '../components/Production'
 import Products from '../components/Products'
 import Samples from '../components/Samples'
 import WhatWeDo from '../components/WhatWeDo'
-
+import { FaCaretDown } from "react-icons/fa"
+import { useState } from 'react'
 export default function Home() {
+  const [opens, setOpens] = useState(false);
+
+  const popup = () => {
+    setOpens(!opens)
+  }
+
   return (
     <>
       <Head>
@@ -23,37 +30,45 @@ export default function Home() {
       </Head>
 
       <div className='flex'>
-        <div className='h-screen bg-black hidden sm:block sm:max-w-[226px]'>
+        <div className='h-screen bg-black hidden sm:block sm:max-w-[226px] xl:max-w-[256px] '>
           <img src="https://web.archive.org/web/20181127040815im_/http://lucentpics.com/assets/images/logo.png" alt="" />
-          <div className='flex items-center  pl-[20.4px] pr-[6.8px] py-[6.8px] bg-[#121212] text-white'>
-            <p className='text-[11px] leading-[13px] font-medium md:text-[14.14px] md:leading-[26px]'>Kathmandu,Nepal</p>
+          <div className='flex items-center  pl-[20.4px] xl:pl-[24px] pr-[6.8px] py-[6.8px]  bg-[#121212] text-white '>
+            <p className='text-[11px] leading-[13px]  font-medium md:text-[14.14px] md:leading-[26px] xl:text-[16px]'>Kathmandu,Nepal</p>
           </div>
           <div className='w-full bg-[#b27234] mt-1'>
-            <Link href={"#hero"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px]  md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#121212] ">Home</Link>
+            <Link href={"#hero"} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px]  md:text-[11.52px]  xl:text-[12.8px]  md:leading-[22px] leading-[16px] text-[#121212] ">Home</Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#what_we_do"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px] md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#fff] ">What We do</Link>
+            <Link href={"#what_we_do"} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px] md:text-[11.52px] xl:text-[12.8px] md:leading-[22px] leading-[16px] text-[#fff] hover:text-[#121212] ">What We do</Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#products"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px] md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#fff] ">Product</Link>
+            <Link href={"#products"} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px] md:text-[11.52px] xl:text-[12.8px] md:leading-[22px] leading-[16px] text-[#fff]  hover:text-[#121212]">Product</Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#pre_production"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px] md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#fff] ">Services</Link>
+            <Link href={""} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px] md:text-[11.52px] xl:text-[12.8px] md:leading-[22px] leading-[16px] text-[#fff] hover:text-[#121212] flex items-center relative" onClick={popup}><p className='flex items-center'>Services <FaCaretDown /></p>
+              {
+                opens && <ul className='flex flex-col w-[70%] py-5 rounded-md bg-white text-black pl-6 space-y-1 absolute top-[35px] left-[5px] shadow-sm shadow-white'>
+                  <Link href={"#pre_production"} className="text-[#16181b] xl:text-[16px]">Pre-production</Link>
+                  <Link href={"#production"} className="text-[#16181b] xl:text-[16px]">production</Link>
+                  <Link href={"#post_production"} className="text-[#16181b] xl:text-[16px]">Post-production</Link>
+                </ul>
+              }
+            </Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#filming"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px] md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#fff] ">Filming in Nepal</Link>
+            <Link href={"#filming"} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px] md:text-[11.52px] xl:text-[12.8px] md:leading-[22px] leading-[16px] text-[#fff] hover:text-[#121212]">Filming in Nepal</Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#sample"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px]  md:text-[11.52px] md:leading-[22px]leading-[16px] text-[#fff] ">Works</Link>
+            <Link href={"#sample"} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px]  md:text-[11.52px] xl:text-[12.8px] md:leading-[22px]leading-[16px] text-[#fff] hover:text-[#121212]">Works</Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#clients"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px] md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#fff] ">Clients</Link>
+            <Link href={"#clients"} className="pl-[20.4px] xl:pl-[24px]  pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px] md:text-[11.52px] xl:text-[12.8px] md:leading-[22px] leading-[16px] text-[#fff] hover:text-[#121212]">Clients</Link>
           </div>
           <div className='w-full hover:bg-[#b27234] '>
-            <Link href={"#contact"} className="pl-[20.4px] pr-[13.6px] py-[6.8px] text-[11px] md:text-[11.52px] md:leading-[22px] leading-[16px] text-[#fff] ">Contact Us</Link>
+            <Link href={"#contact"} className="pl-[20.4px] xl:pl-[24px] pr-[13.6px] py-[6.8px] xl:py-[8px] text-[11px] md:text-[11.52px]  xl:text-[12.8px] md:leading-[22px] leading-[16px] text-[#fff] hover:text-[#121212]">Contact Us</Link>
           </div>
         </div>
-        <div className=' overflow-x-hidden snap-y snap-mandatory overflow-scroll h-screen main sm:flex-1'>
+        <div className=' overflow-x-hidden snap-y snap-mandatory overflow-scroll xl:py-[8px] h-screen main sm:flex-1'>
           <Header />
           <section id='hero' className='h-screen snap-center'>
             <HeroSection />
